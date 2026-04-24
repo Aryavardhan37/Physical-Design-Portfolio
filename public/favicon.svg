@@ -1,5 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="12" fill="#0a0a0f"/>
-  <text x="50" y="68" font-family="monospace" font-size="55" font-weight="bold" fill="#00f0ff" text-anchor="middle">A</text>
-  <rect x="15" y="80" width="70" height="3" rx="1" fill="#ff00aa"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="16" y="16" width="32" height="32" rx="3" fill="#1a1a2e" stroke="#00f0ff" stroke-width="2"/>
+  <rect x="22" y="22" width="20" height="20" rx="2" fill="#0a0a14" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+  <rect x="27" y="27" width="10" height="10" rx="1" fill="#00f0ff" opacity="0.3"/>
+  <!-- Top pins -->
+  <rect x="22" y="10" width="3" height="8" rx="1" fill="#00f0ff"/>
+  <rect x="30" y="10" width="3" height="8" rx="1" fill="#00f0ff"/>
+  <rect x="38" y="10" width="3" height="8" rx="1" fill="#00f0ff"/>
+  <!-- Bottom pins -->
+  <rect x="22" y="46" width="3" height="8" rx="1" fill="#00f0ff"/>
+  <rect x="30" y="46" width="3" height="8" rx="1" fill="#00f0ff"/>
+  <rect x="38" y="46" width="3" height="8" rx="1" fill="#00f0ff"/>
+  <!-- Left pins -->
+  <rect x="10" y="22" width="8" height="3" rx="1" fill="#00f0ff"/>
+  <rect x="10" y="30" width="8" height="3" rx="1" fill="#00f0ff"/>
+  <rect x="10" y="38" width="8" height="3" rx="1" fill="#00f0ff"/>
+  <!-- Right pins -->
+  <rect x="46" y="22" width="8" height="3" rx="1" fill="#00f0ff"/>
+  <rect x="46" y="30" width="8" height="3" rx="1" fill="#00f0ff"/>
+  <rect x="46" y="38" width="8" height="3" rx="1" fill="#00f0ff"/>
 </svg>
