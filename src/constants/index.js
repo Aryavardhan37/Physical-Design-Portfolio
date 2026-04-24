@@ -1,0 +1,636 @@
+// ═══════════════════════════════════════════════════════
+// Portfolio Data — Aryavardhan Sharma
+// ═══════════════════════════════════════════════════════
+// NOTE: NO BlogIllustrations import here — resolved in BlogReader.jsx
+
+export const NAV_LINKS = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "publications", label: "Publications" },
+  { id: "blogs", label: "Blog" },
+  { id: "achievements", label: "Achievements" },
+  { id: "contact", label: "Contact" },
+];
+
+export const TERMINAL_LINES = [
+  { text: "synopsys_pd> source asic_profile.tcl", delay: 55, color: "#00ff88", pauseAfter: 400 },
+  { text: "Loading physical design data...", delay: 35, color: "#9ca3af", pauseAfter: 600 },
+  { text: "Extracting IO & Logic structures...", delay: 35, color: "#9ca3af", pauseAfter: 500 },
+  { text: "Checking timing constraints: [OK]", delay: 35, color: "#9ca3af", pauseAfter: 300, highlight: "[OK]", highlightColor: "#00f0ff" },
+  { text: "Running place and route iterations: [OK]", delay: 35, color: "#9ca3af", pauseAfter: 300, highlight: "[OK]", highlightColor: "#00f0ff" },
+  { text: "Verifying signoff parameters: [OK]", delay: 35, color: "#9ca3af", pauseAfter: 300, highlight: "[OK]", highlightColor: "#00f0ff" },
+  { text: "", delay: 0, color: "#9ca3af", pauseAfter: 200 },
+  { text: "Aryavardhan_Sharma.profile initialized.", delay: 50, color: "#00ff88", pauseAfter: 0, glow: true },
+];
+
+export const HERO_DATA = {
+  greeting: "Hello, I am",
+  name: "Aryavardhan Sharma",
+  title: "ASIC Physical Design Engineer",
+  tagline: "Shipping silicon from 32nm to 3nm \u2014 not slides.",
+  description:
+    "Built my foundation early, strengthened it through real SoC design work. Trained hands-on in synthesis, PnR \u2014 not just running tools, but fixing what breaks.",
+  cta: "View My Work",
+  ctaLink: "#projects",
+};
+
+export const ABOUT_DATA = {
+  heading: "About Me",
+  paragraphs: [
+    "I\u2019m an ASIC Physical Design Engineer at Einfochips (An Arrow Company), working across the full backend design flow with Synopsys and Cadence tools. My experience spans technology nodes from 32nm all the way down to 3nm.",
+    "I graduated from Marwadi University, Rajkot with a B.Tech in Information & Communication Technology, specializing in Embedded Systems and VLSI, with a CGPA of 9.24/10.",
+    "I care about clean timing, clean layouts, and being part of teams that ship silicon. Beyond physical design, I have a deep interest in IoT, AI, and research \u2014 with two IEEE publications and a government-granted copyright to my name.",
+  ],
+  highlights: [
+    { label: "Tech Nodes", value: "3nm \u2014 32nm" },
+    { label: "CGPA", value: "9.24 / 10" },
+    { label: "Publications", value: "6 IEEE + 1\u00a9" },
+    { label: "Current Role", value: "PD @ Einfochips" },
+  ],
+};
+
+export const EXPERIENCE_DATA = [
+  {
+    id: 1,
+    role: "ASIC Physical Design Associate Engineer",
+    company: "Einfochips \u2014 An Arrow Company",
+    location: "Ahmedabad, Gujarat, India",
+    period: "January 2025 \u2014 Present",
+    description: "Working on multiple tape-out-grade designs covering the entire backend physical design flow.",
+    bullets: [
+      "Experience over the whole backend design flow with Synopsys and Cadence tool suites",
+      "Worked with 3nm, 14nm, 28nm, and 32nm technology nodes",
+      "Hands-on with Fusion Compiler, IC Compiler 2, PrimeTime, Formality, IC Validator",
+      "Responsible for floorplanning, placement, CTS, routing, and signoff",
+    ],
+    techNodes: ["3nm", "14nm", "28nm", "32nm"],
+    color: "cyan",
+  },
+  {
+    id: 2,
+    role: "Research & Development Intern",
+    company: "Arishna IoT Solutions",
+    location: "Remote",
+    period: "March 2024 \u2014 December 2024",
+    description: "Worked on creating Cloud & IoT pipelines and developing multi-modal networks for IoT applications.",
+    bullets: [
+      "Developed Multi-Modal networks for IoT in various real-world applications",
+      "Created GEN-AI Cloud Server for Inferences",
+      "Built end-to-end Cloud & IoT data pipelines",
+    ],
+    techNodes: [],
+    color: "magenta",
+  },
+  {
+    id: 3,
+    role: "Research Intern",
+    company: "Marwadi University",
+    location: "Rajkot, Gujarat, India",
+    period: "May 2023 \u2014 July 2023",
+    description: "Converting research ideas into real-world prototypes using Python and IoT.",
+    bullets: [
+      "Developed first research prototype and published it at IEEE International Conference",
+      "Converted research ideas into working prototypes using Python and IoT tech stack",
+      "Presented work at IIT Roorkee IEEE Conference",
+    ],
+    techNodes: [],
+    color: "neon",
+  },
+];
+
+export const SKILLS_DATA = [
+  {
+    category: "EDA Tools",
+    icon: "\u2699\ufe0f",
+    color: "cyan",
+    skills: ["Fusion Compiler", "IC Compiler 2", "PrimeTime", "Design Compiler", "Formality", "IC Validator", "OpenLane", "OpenROAD"],
+  },
+  {
+    category: "Programming & HDLs",
+    icon: "\uD83D\uDCBB",
+    color: "magenta",
+    skills: ["Verilog", "TCL", "Python", "Perl", "Shell Scripting"],
+  },
+  {
+    category: "Dev & Infrastructure",
+    icon: "\uD83D\uDEE0\uFE0F",
+    color: "neon",
+    skills: ["Docker", "Git", "Linux", "GitHub"],
+  },
+  {
+    category: "Hardware Platforms",
+    icon: "\uD83D\uDD27",
+    color: "gold",
+    skills: ["Altera FPGA", "Jetson Nano", "Raspberry Pi 4", "Arduino", "ESP8266"],
+  },
+  {
+    category: "Soft Skills",
+    icon: "\uD83E\uDDE0",
+    color: "cyan",
+    skills: ["Problem Solving", "Logical Thinking", "Communication", "Team Collaboration", "Time Management"],
+  },
+];
+
+export const PROJECTS_DATA = [
+  {
+    id: 1,
+    title: "Elevator Controller System",
+    subtitle: "Verilog \u2014 Digital Electronics",
+    description: "Implemented and simulated an Elevator Controller System using Verilog, focusing on FSMs, flip-flops, and next-state logic to ensure efficient and reliable operation.",
+    techStack: ["Verilog", "Digital Design", "FSM", "Simulation"],
+    link: "https://github.com/Aryavardhan37/Design-and-Implmentation-of-Elevator-Controller-using-verilog",
+    color: "cyan",
+  },
+  {
+    id: 2,
+    title: "Electronic Tug of War",
+    subtitle: "Case Study \u2014 Digital Electronics",
+    description: "Reviewed and simulated the Electronic Tug of War case study using Proteus, involving shift registers, flip-flops, and digital logic circuit design.",
+    techStack: ["Digital Electronics", "Proteus", "Circuit Design"],
+    link: "#",
+    color: "magenta",
+  },
+  {
+    id: 3,
+    title: "NatureNexus: Smart IoT Plant",
+    subtitle: "Research Internship \u2014 IoT Product",
+    description: "Evolved a research project into a real IoT product for smart plant monitoring during university research internship.",
+    techStack: ["IoT", "Python", "Sensors", "Cloud"],
+    link: "#",
+    color: "neon",
+  },
+  {
+    id: 4,
+    title: "ARICA \u2014 AI Powered Assistance",
+    subtitle: "AI + Cloud \u2014 Product Development",
+    description: "AI-powered assistance for customised datasets. Gained a grant of \u20b91 Lakh from NewGEN-IEDC (Government Initiative) for product development.",
+    techStack: ["GEN-AI", "Cloud", "Python", "NLP"],
+    link: "#",
+    color: "gold",
+  },
+  {
+    id: 5,
+    title: "Pathfinding Adventure",
+    subtitle: "Python Game \u2014 Copyrighted",
+    description: "A game developed in Python that teaches graph theory concepts through an interactive treasure hunt. Copyright approved by the Patent Office of India.",
+    techStack: ["Python", "Graph Theory", "Game Dev"],
+    link: "https://drive.google.com/file/d/16Njm0x-9bG1PZtaukFVbBDsTDwPNPQ6K/view",
+    color: "cyan",
+  },
+];
+
+export const PUBLICATIONS_DATA = [
+  {
+    id: 1,
+    title: "Comprehensive Analysis of Multi-Objective Optimization Strategies in Physical Design",
+    subtitle: "Timing, Congestion, and Hybrid-Driven Approaches with Clock Tree and Power Optimization",
+    conference: "2025 IEEE 4th International Conference for Advancement in Technology (ICONAT)",
+    date: "Sep 2025",
+    venue: "Goa, India",
+    doi: "10.1109/ICONAT66879.2025.11362553",
+    link: "https://ieeexplore.ieee.org/document/11362553",
+    views: 33,
+    type: "IEEE Publication",
+    topic: "VLSI Physical Design",
+  },
+  {
+    id: 2,
+    title: "Review of Cutting-Edge Latest Trends and Innovations in Low-Power VLSI Physical Design Techniques for Next-Gen AI/ML Hardware",
+    subtitle: "",
+    conference: "2025 5th Asian Conference on Innovation in Technology (ASIANCON)",
+    date: "Aug 2025",
+    venue: "Pimpri, India",
+    doi: "10.1109/ASIANCON66527.2025.11280810",
+    link: "https://ieeexplore.ieee.org/document/11280810",
+    views: 162,
+    type: "IEEE Publication",
+    topic: "VLSI / AI-ML",
+  },
+  {
+    id: 3,
+    title: "A Novel Framework for Decoding Inter-Species Communication with Octopodes (DISC-O)",
+    subtitle: "",
+    conference: "OCEANS 2025 \u2014 Great Lakes",
+    date: "Sep\u2013Oct 2025",
+    venue: "Chicago, IL, USA",
+    doi: "10.23919/OCEANS59106.2025.11244956",
+    link: "https://ieeexplore.ieee.org/document/11244956",
+    views: 11,
+    type: "IEEE Publication",
+    topic: "Deep Learning / Marine",
+  },
+  {
+    id: 4,
+    title: "Cephalopod AR: An Interactive Marine Biology Learning Experience through Augmented Reality",
+    subtitle: "",
+    conference: "2025 IEEE International Symposium on Mixed and Augmented Reality Adjunct (ISMAR-Adjunct)",
+    date: "Oct 2025",
+    venue: "Daejeon, South Korea",
+    doi: "10.1109/ISMAR-Adjunct68609.2025.00259",
+    link: "https://ieeexplore.ieee.org/document/00259",
+    views: 35,
+    type: "IEEE Publication",
+    topic: "AR / Education",
+  },
+  {
+    id: 5,
+    title: "Sensor Node-Based Smart Irrigation System with IoT Framework",
+    subtitle: "",
+    conference: "2023 International Conference on Electrical, Electronics, Communication and Computers (ELEXCOM)",
+    date: "Aug 2023",
+    venue: "Roorkee, India",
+    doi: "10.1109/ELEXCOM58812.2023.10370640",
+    link: "https://ieeexplore.ieee.org/document/10370640",
+    views: 257,
+    citations: 4,
+    type: "IEEE Publication",
+    topic: "IoT / Agriculture",
+  },
+  {
+    id: 6,
+    title: "How Effective is Game Based Learning for Teaching Graph Theory Concepts?: A Case Study of the Treasure Hunt Game",
+    subtitle: "",
+    conference: "2023 IEEE 11th Region 10 Humanitarian Technology Conference (R10-HTC)",
+    date: "Oct 2023",
+    venue: "Rajkot, India",
+    doi: "10.1109/R10-HTC57504.2023.10461843",
+    link: "https://ieeexplore.ieee.org/document/10461843",
+    views: 74,
+    citations: 1,
+    type: "IEEE Publication",
+    topic: "Game-Based Learning",
+  },
+];
+
+export const ACHIEVEMENTS_DATA = [
+  { id: 1, title: "AIU: Anveshan 2023", role: "Student Researcher \u2014 Finalist", description: "Became a Finalist at a National-Level Student Research Convention organized by the Association of Indian Universities.", icon: "\uD83C\uDFC6", color: "gold" },
+  { id: 2, title: "IEEEXtreme 17.0", role: "Gujarat Section Lead", description: "First role as Section Lead, represented the state at an International Programming Competition.", icon: "\uD83C\uDF0D", color: "cyan" },
+  { id: 3, title: "ARICA \u2014 \u20b91 Lakh Grant", role: "Product Developer", description: "Gained a Government Grant for AI product development from NewGEN-IEDC, Marwadi University.", icon: "\uD83D\uDCB0", color: "neon" },
+  { id: 4, title: "IEEE WIE Ex-Com", role: "Co-Chair", description: "Selected as Co-Chair in Executive Committee for IEEE MEFGI WIE by the University.", icon: "\u2b50", color: "magenta" },
+  { id: 5, title: "Circuitology Club", role: "General Secretary", description: "Elected as General Secretary for the hardware-domain club for passion and skills in the field.", icon: "\uD83D\uDD0C", color: "gold" },
+  { id: 6, title: "NatureNexus", role: "Research Intern \u2014 Product", description: "Evolved a university research internship project into a real-world IoT product.", icon: "\uD83C\uDF31", color: "neon" },
+];
+
+export const SOCIAL_LINKS = {
+  email: "aryavardhansharma46@gmail.com",
+  linkedin: "https://www.linkedin.com/in/aryavardhan-sharma/",
+  github: "https://github.com/Aryavardhan37",
+  hdlbits: "https://hdlbits.01xz.net/wiki/Special:VlgStats/665F37EADEF21B89",
+  phone: "+918160041305",
+};
+
+export const TECH_NODES = [
+  { node: "3nm", color: "#ff00aa", description: "Most advanced node" },
+  { node: "14nm", color: "#00f0ff", description: "High performance" },
+  { node: "28nm", color: "#00ff88", description: "Power-efficient" },
+  { node: "32nm", color: "#ffd700", description: "Legacy mature" },
+];
+
+// ═══════════════════════════════════════════════════════
+// CHIP FLOORPLAN DATA
+// ═══════════════════════════════════════════════════════
+
+export const CHIP_BLOCKS = [
+  { id: "cpu",     name: "CPU Core",           shortName: "CPU",   x: 25, y: 15, w: 35, h: 30, color: "#00f0ff", glowColor: "rgba(0,240,255,0.3)" },
+  { id: "memctrl", name: "Memory Controller",   shortName: "MEMCTL",x: 65, y: 15, w: 28, h: 22, color: "#ff00aa", glowColor: "rgba(255,0,170,0.3)" },
+  { id: "sram",    name: "SRAM",               shortName: "SRAM",  x: 65, y: 42, w: 28, h: 18, color: "#ffd700", glowColor: "rgba(255,215,0,0.3)" },
+  { id: "bus",     name: "Bus Matrix / NOC",    shortName: "NOC",   x: 25, y: 50, w: 35, h: 10, color: "#00ff88", glowColor: "rgba(0,255,136,0.3)" },
+  { id: "dma",     name: "DMA Controller",      shortName: "DMA",   x: 5,  y: 65, w: 25, h: 18, color: "#00f0ff", glowColor: "rgba(0,240,255,0.3)" },
+  { id: "ioctrl",  name: "IO Controller",       shortName: "IOCTRL",x: 35, y: 65, w: 30, h: 18, color: "#ff00aa", glowColor: "rgba(255,0,170,0.3)" },
+  { id: "pmu",     name: "Power Management",    shortName: "PMU",   x: 70, y: 65, w: 23, h: 18, color: "#ffd700", glowColor: "rgba(255,215,0,0.3)" },
+  { id: "pll",     name: "PLL",                shortName: "PLL",   x: 5,  y: 15, w: 15, h: 12, color: "#00ff88", glowColor: "rgba(0,255,136,0.3)" },
+  { id: "gpio",    name: "GPIO Bank",           shortName: "GPIO",  x: 5,  y: 32, w: 15, h: 28, color: "#ff00aa", glowColor: "rgba(255,0,170,0.3)" },
+  { id: "clktree", name: "Clock Distribution",  shortName: "CLK",   x: 25, y: 88, w: 50, h: 6,  color: "#00f0ff", glowColor: "rgba(0,240,255,0.3)" },
+];
+
+export const IO_PADS = {
+  top:    { count: 18, prefix: "T" },
+  bottom: { count: 18, prefix: "B" },
+  left:   { count: 14, prefix: "L" },
+  right:  { count: 14, prefix: "R" },
+};
+
+export const CHIP_TRACES = [
+  { from: "cpu", to: "bus", color: "#00f0ff" },
+  { from: "bus", to: "memctrl", color: "#ff00aa" },
+  { from: "bus", to: "dma", color: "#00ff88" },
+  { from: "bus", to: "ioctrl", color: "#ffd700" },
+  { from: "pll", to: "cpu", color: "#00ff88" },
+  { from: "clktree", to: "bus", color: "#00f0ff" },
+  { from: "sram", to: "memctrl", color: "#ffd700" },
+  { from: "gpio", to: "ioctrl", color: "#ff00aa" },
+  { from: "pmu", to: "cpu", color: "#ffd700" },
+];
+
+export const GLOBE_PINS = [
+  { lat: 29.8543, lng: 77.888, label: "ELEXCOM 2023", city: "Roorkee, India", color: "#00f0ff" },
+  { lat: 22.3039, lng: 70.8022, label: "R10-HTC 2023", city: "Rajkot, India", color: "#ff00aa" },
+  { lat: 36.3504, lng: 127.3845, label: "ISMAR 2025", city: "Daejeon, South Korea", color: "#00ff88" },
+  { lat: 41.8781, lng: -87.6298, label: "OCEANS 2025", city: "Chicago, USA", color: "#ffd700" },
+  { lat: 18.6279, lng: 73.8009, label: "ASIANCON 2025", city: "Pimpri, India", color: "#00f0ff" },
+  { lat: 15.4909, lng: 73.8278, label: "ICONAT 2025", city: "Goa, India", color: "#ff00aa" },
+];
+
+// ═══════════════════════════════════════════════════════
+// BLOGS DATA
+// Illustration components are STRING references
+// Resolved in BlogReader.jsx via ILLUSTRATION_MAP
+// ═══════════════════════════════════════════════════════
+
+export const BLOGS_DATA = [
+  {
+    id: "asic-pd-flow-beginners",
+    title: "ASIC Physical Design Flow \u2014 A Beginner\u2019s Roadmap",
+    description: "Everything I wish someone told me when I started in PD. From floorplanning to signoff, the real flow explained simply.",
+    date: "April 2026",
+    readTime: "8 min",
+    tags: ["Physical Design", "ASIC", "Beginners"],
+    color: "cyan",
+    coverGradient: "linear-gradient(135deg, #00f0ff22, #00ff8822)",
+    content: [
+      { type: "h1", text: "ASIC Physical Design Flow \u2014 A Beginner\u2019s Roadmap" },
+      { type: "subtitle", text: "April 2026 \u00b7 8 min read" },
+      { type: "hr" },
+      { type: "p", text: "When I started my journey in physical design, the sheer number of steps felt overwhelming. Synthesis, floorplanning, placement, CTS, routing, signoff \u2014 each one a universe of its own. Here\u2019s the roadmap I wish I had." },
+      { type: "p", text: "Think of it like building a city. You start with a blueprint (RTL), then decide where to place buildings (floorplan), lay down roads (routing), install the power grid, and finally get the building inspector to sign off. Miss one step, and the whole city crumbles." },
+
+      { type: "h2", text: "The Big Picture" },
+      { type: "p", text: "Physical design is the bridge between <strong>RTL</strong> (your Verilog/VHDL code) and <strong>GDSII</strong> (what the fab actually prints on silicon). Every step has one goal: make the design manufacturable while meeting timing, power, and area targets." },
+      { type: "p", text: "Here\u2019s the thing most beginners miss \u2014 PD is not just \u201crun the tool and pray.\u201d It\u2019s about understanding <strong>why</strong> each step exists, what trade-offs you\u2019re making, and how one decision cascades into everything downstream." },
+      { type: "illustration", component: "RTLtoGDSII" },
+
+      { type: "h2", text: "The Flow" },
+
+      { type: "h3", text: "1. Synthesis \u2014 Turning Code Into Gates" },
+      { type: "p", text: "Imagine you\u2019ve written a recipe in English. Synthesis is like translating that recipe into a list of exact kitchen tools and ingredients you need. Your Verilog code gets mapped to actual logic gates \u2014 ANDs, ORs, flip-flops \u2014 from the foundry\u2019s standard cell library." },
+      { type: "p", text: "Tools like <strong>Design Compiler</strong> or <strong>Genus</strong> take your RTL and produce a <strong>gate-level netlist</strong> \u2014 a massive list of cells and how they\u2019re connected. The tool doesn\u2019t know anything about physical locations yet \u2014 it\u2019s purely logical. Think of it as planning what furniture you need without knowing the room layout." },
+      { type: "p", text: "<strong>What to check after synthesis:</strong>" },
+      { type: "ul", items: [
+        "<strong>WNS (Worst Negative Slack)</strong> \u2014 Is your worst timing path meeting the target clock period? Ideally positive or zero",
+        "<strong>TNS (Total Negative Slack)</strong> \u2014 Sum of all negative slacks. Even if WNS is small, a huge TNS means many paths are failing",
+        "<strong>Area</strong> \u2014 Total cell area in \u00b5m\u00b2. Is it within your die budget?",
+        "<strong>Cell count</strong> \u2014 How many standard cells? Gives you a feel for design complexity",
+        "<strong>Power estimate</strong> \u2014 Dynamic + leakage. Not accurate yet (no physical info), but gives a ballpark",
+        "<strong>Unmapped cells / black boxes</strong> \u2014 Any modules the tool couldn\u2019t resolve? Fix these before moving on",
+      ]},
+
+      { type: "h3", text: "2. Floorplanning \u2014 Laying Out the City" },
+      { type: "p", text: "This is where physical design truly begins. Floorplanning is like being an urban planner \u2014 you decide where the major blocks go, where the highways run, and how power is distributed across the chip." },
+      { type: "p", text: "You define:" },
+      { type: "ul", items: [
+        "<strong>Die size</strong> and <strong>core area</strong> \u2014 the total silicon you have to work with",
+        "<strong>Hard macro placement</strong> \u2014 where the big blocks go (Block 1, Block 2, etc.). These are like skyscrapers \u2014 you can\u2019t move them easily later",
+        "<strong>IO pad ring</strong> \u2014 the chip\u2019s connection to the outside world. Like the city\u2019s highway exits",
+        "<strong>Power grid planning</strong> \u2014 PG mesh, rings, and straps. The electrical highway that delivers VDD/VSS to every cell",
+        "<strong>Placement blockages</strong> \u2014 areas where the tool is told \u201cdon\u2019t place anything here\u201d (e.g., under macros, near IO pads)",
+      ]},
+      { type: "p", text: "<strong>Why this step is king:</strong> A bad floorplan = months of pain. If your macros are in the wrong corner, timing paths become too long, congestion explodes, and IR drop kills your power grid. I\u2019ve seen tapeouts delayed by weeks because of a floorplan decision made on day one." },
+      { type: "illustration", component: "FloorplanViz" },
+      { type: "p", text: "<strong>What to check after floorplanning:</strong>" },
+      { type: "ul", items: [
+        "<strong>Macro-to-macro channel width</strong> \u2014 Is there enough space between hard macros for routing? At advanced nodes, DRC keepout zones eat into this fast",
+        "<strong>Core utilization target</strong> \u2014 Typically 60\u201375%. Too high = congestion nightmare. Too low = wasted silicon",
+        "<strong>Power grid coverage</strong> \u2014 Are VDD/VSS rings and straps reaching every region of the die? Check PG mesh density",
+        "<strong>Pin accessibility</strong> \u2014 Can the router actually reach the macro pins? Blocked pins = unroutable nets later",
+        "<strong>Aspect ratio</strong> \u2014 Is the die shape reasonable? Extreme rectangles cause uneven wire lengths and congestion",
+        "<strong>Flyline analysis</strong> \u2014 Visual check of net connectivity. Long flylines crossing the die = potential timing/congestion issues",
+      ]},
+
+      { type: "h3", text: "3. Placement \u2014 Filling the City With Buildings" },
+      { type: "p", text: "Now the tool takes your millions of standard cells and decides where each one physically sits inside the core area. It\u2019s like assigning every person in a city to a specific house, while making sure neighbors who talk often live close together." },
+      { type: "p", text: "Placement happens in stages: <strong>global placement</strong> (rough positions), <strong>legalization</strong> (snap cells to site rows), and <strong>detailed placement</strong> (fine-tuning for timing and congestion)." },
+      { type: "p", text: "<strong>Analogy:</strong> Imagine seating guests at a wedding. You want people who need to talk (timing-critical paths) at the same table. You don\u2019t want all the loud groups in one corner (congestion). And you need clear aisles for the waiters (routing channels)." },
+      { type: "illustration", component: "PlacementAnim" },
+      { type: "p", text: "<strong>What to check after placement:</strong>" },
+      { type: "ul", items: [
+        "<strong>WNS / TNS</strong> \u2014 Are critical paths still meeting timing after physical placement? This is your first real timing picture",
+        "<strong>Congestion map</strong> \u2014 Are there routing hotspots? Red zones on the congestion map = trouble for the router",
+        "<strong>Cell density / utilization</strong> \u2014 Is placement evenly distributed? Localized high-density regions cause congestion",
+        "<strong>Max transition violations</strong> \u2014 Are any nets seeing slow transitions (high slew)? Usually means weak drivers or long wires",
+        "<strong>Max fanout violations</strong> \u2014 Any net driving too many cells? These need buffer tree insertion",
+        "<strong>Placement DRCs</strong> \u2014 Are cells overlapping? Any cells placed in blockage regions?",
+        "<strong>Power estimate (placed)</strong> \u2014 Now that cells have physical locations, power estimates become more realistic",
+      ]},
+
+      { type: "h3", text: "4. Clock Tree Synthesis (CTS) \u2014 The Heartbeat" },
+      { type: "p", text: "The clock is the heartbeat of your chip. Every flip-flop toggles on the clock edge. CTS builds the network that delivers this clock signal to every single flip-flop \u2014 and the goal is to make it arrive <strong>at the same time everywhere</strong>." },
+      { type: "p", text: "Why does this matter? If the clock arrives at flip-flop A 200ps before flip-flop B, and A sends data to B, you\u2019ve lost 200ps of your timing budget. That\u2019s the <strong>skew</strong> problem." },
+      { type: "p", text: "<strong>Analogy:</strong> Imagine you\u2019re a conductor of an orchestra. Every musician (flip-flop) needs to hear your baton (clock) at the exact same moment. If the violins hear it 1ms before the drums, the symphony falls apart. CTS builds the perfect acoustic system so everyone hears the beat simultaneously." },
+      { type: "illustration", component: "ClockTreeViz" },
+      { type: "p", text: "<strong>What to check after CTS:</strong>" },
+      { type: "ul", items: [
+        "<strong>Clock skew</strong> \u2014 The difference in clock arrival time between the earliest and latest flip-flop. Target: as low as possible (typically < 50ps at advanced nodes)",
+        "<strong>Insertion delay</strong> \u2014 Total delay from clock source to the farthest flip-flop. Lower is better, but consistency across the tree matters more",
+        "<strong>Clock transition time (slew)</strong> \u2014 Is the clock edge sharp enough? Slow clock transitions cause timing uncertainty and increased power",
+        "<strong>Buffer count</strong> \u2014 How many buffers/inverters were inserted? Too many = area/power overhead. Too few = can\u2019t meet skew targets",
+        "<strong>Setup/hold timing</strong> \u2014 After CTS, both setup AND hold timing matter. CTS often introduces new hold violations that need fixing",
+        "<strong>Clock tree power</strong> \u2014 The clock network can consume 30\u201340% of total dynamic power. Check if it\u2019s within budget",
+        "<strong>Useful skew applied</strong> \u2014 Did the tool intentionally skew any paths? Understand where and why \u2014 this borrows margin from one path to give to another",
+      ]},
+
+      { type: "h3", text: "5. Routing \u2014 Laying the Wires" },
+      { type: "p", text: "Routing is where the metal wires are drawn to connect all the cells. If placement decided where the buildings go, routing builds the roads between them." },
+      { type: "p", text: "At advanced nodes (3nm, 5nm), routing is the <strong>hardest part</strong> of PD:" },
+      { type: "ul", items: [
+        "<strong>Metal layers are thin</strong> \u2014 Higher resistance means more delay and IR drop per unit length",
+        "<strong>DRC rules are insane</strong> \u2014 Minimum width, minimum spacing, via enclosure, end-of-line rules \u2014 hundreds of rules per layer",
+        "<strong>Crosstalk is real</strong> \u2014 Wires running parallel can capacitively couple and cause timing failures",
+        "<strong>Via resistance matters</strong> \u2014 At 3nm, a single via can add significant resistance. Multiply by millions of vias...",
+        "<strong>Limited tracks</strong> \u2014 Each metal layer has a fixed number of routing tracks. Run out, and you\u2019re stuck",
+      ]},
+      { type: "p", text: "<strong>Analogy:</strong> Think of it as a massive city with 15 levels of highways stacked on top of each other (metal layers M0\u2013M15). Lower levels are narrow local streets (high resistance, short connections). Upper levels are interstate highways (low resistance, long global connections). Vias are the ramps connecting one level to another." },
+      { type: "illustration", component: "RoutingAnim" },
+      { type: "p", text: "<strong>What to check after routing:</strong>" },
+      { type: "ul", items: [
+        "<strong>DRC violations</strong> \u2014 Spacing, width, via enclosure errors. Zero DRC is the goal for tapeout. Run incremental ECO routing to fix, don\u2019t rip up everything",
+        "<strong>WNS / TNS (post-route)</strong> \u2014 Timing changes after routing because now you have real wire RC. This is the most accurate pre-signoff timing",
+        "<strong>Antenna violations</strong> \u2014 Long metal wires can accumulate charge during manufacturing and damage gate oxide. Check and insert diodes",
+        "<strong>Crosstalk delta delay</strong> \u2014 How much timing is shifting due to coupling between adjacent nets? SI (Signal Integrity) analysis catches this",
+        "<strong>Shorts / opens</strong> \u2014 Any nets that are shorted together or not connected at all? These are fatal",
+        "<strong>Via count and doubling</strong> \u2014 Single vias are reliability risks. Check via doubling percentage \u2014 higher is better (target >90%)",
+        "<strong>Overflow / unrouted nets</strong> \u2014 Any nets the router couldn\u2019t complete? These need manual intervention or congestion relief",
+        "<strong>Metal layer utilization</strong> \u2014 Which layers are maxed out? Helps you decide where to add PG straps vs. keep for signal routing",
+      ]},
+
+      { type: "h3", text: "6. Signoff \u2014 The Final Inspection" },
+      { type: "p", text: "Signoff is the building inspection before the city opens. You\u2019re checking <strong>everything</strong> \u2014 structural integrity, fire safety, plumbing, electrical. In chip terms:" },
+      { type: "ul", items: [
+        "<strong>STA (Static Timing Analysis)</strong> \u2014 Every timing path across all PVT corners and modes. Setup, hold, recovery, removal. If any path violates, the chip might not work at the target frequency",
+        "<strong>DRC (Design Rule Check)</strong> \u2014 Every wire, via, and cell must follow the foundry\u2019s manufacturing rules. Even one violation can cause a chip to fail in the fab",
+        "<strong>LVS (Layout vs Schematic)</strong> \u2014 Verifies that the physical layout matches the logical netlist. Like checking that the built house matches the architect\u2019s blueprint",
+        "<strong>IR Drop (Static + Dynamic)</strong> \u2014 Can the power grid deliver enough voltage to every cell? Static checks average drop; dynamic checks worst-case instantaneous drop (e.g., all flip-flops toggling on the same clock edge)",
+        "<strong>EM (Electromigration)</strong> \u2014 High current density can physically move metal atoms over time and break wires. EM checks ensure reliability over the chip\u2019s lifetime (typically 10+ years)",
+        "<strong>ERC (Electrical Rule Check)</strong> \u2014 Floating nets, shorted supplies, missing connections",
+        "<strong>Antenna Check</strong> \u2014 Long metal wires accumulate charge during manufacturing. Antenna diodes are inserted to protect gate oxide",
+      ]},
+      { type: "illustration", component: "SignoffChecklist" },
+      { type: "p", text: "<strong>What to check at signoff:</strong>" },
+      { type: "ul", items: [
+        "<strong>WNS across ALL corners</strong> \u2014 Not just typical. Check ss (slow-slow), ff (fast-fast), and all voltage/temperature combos. The worst corner wins",
+        "<strong>Hold violations</strong> \u2014 These are unfixable after tapeout. Setup violations = chip runs slower. Hold violations = chip doesn\u2019t work at all",
+        "<strong>Max transition / max capacitance</strong> \u2014 Any remaining violations? These cause signal integrity issues in real silicon",
+        "<strong>Total DRC count = 0</strong> \u2014 Non-negotiable for tapeout. Even \u201cwaived\u201d DRCs need documented justification from the foundry",
+        "<strong>LVS clean</strong> \u2014 Zero mismatches between layout and schematic. Any mismatch = wrong chip",
+        "<strong>IR drop within budget</strong> \u2014 Typically < 5\u201310% of supply voltage. Worst-case dynamic drop is usually the killer",
+        "<strong>EM lifetime</strong> \u2014 All wires and vias must survive the target lifetime at operating temperature and current density",
+        "<strong>Formal verification (LEC)</strong> \u2014 Logical Equivalence Check confirms the netlist wasn\u2019t corrupted through all the physical optimizations",
+      ]},
+      { type: "p", text: "<strong>Reality check:</strong> Signoff is iterative. You fix timing, which breaks DRC. You fix DRC, which breaks timing. You fix both, and IR drop shows up. Welcome to the convergence game. Experienced PD engineers develop an intuition for which fixes won\u2019t cascade \u2014 that\u2019s what separates juniors from seniors." },
+
+      { type: "h2", text: "The Tools of the Trade" },
+      { type: "table", headers: ["Stage", "Tool (Synopsys)", "Tool (Cadence)", "What It Does"], rows: [
+        ["Synthesis", "Design Compiler", "Genus", "RTL \u2192 Gate-level netlist"],
+        ["PnR", "Fusion Compiler / ICC2", "Innovus", "Floorplan, place, CTS, route"],
+        ["STA", "PrimeTime", "Tempus", "Timing signoff"],
+        ["Physical Verification", "IC Validator", "Pegasus", "DRC, LVS, ERC"],
+        ["IR Drop", "RedHawk-SC", "Voltus", "Power grid analysis"],
+        ["LEC", "Formality", "Conformal", "Logical equivalence check"],
+      ]},
+
+      { type: "h2", text: "My Advice for Beginners" },
+      { type: "ol", items: [
+        "<strong>Understand the WHY before the HOW.</strong> Don\u2019t just run scripts blindly. Know why each step exists, what it optimizes, and what happens if you skip it. The engineer who understands the flow can debug anything; the one who just runs scripts is stuck when things break.",
+        "<strong>Learn TCL. Seriously.</strong> Every EDA tool speaks TCL. Want to automate? TCL. Want to query the database? TCL. Want to write custom reports? TCL. It\u2019s not glamorous, but it\u2019s the language of physical design.",
+        "<strong>Read the log files.</strong> The tool tells you what went wrong. Every warning, every info message has meaning. When something fails, the answer is almost always in the log \u2014 not on Stack Overflow.",
+        "<strong>Floorplanning is king.</strong> Spend 30% of your project time here. A great floorplan makes everything downstream easier. A bad one haunts you until tapeout.",
+        "<strong>Timing is a puzzle, not a crisis.</strong> Learn to read timing reports like a story. Understand launch edge, capture edge, clock skew, data path delay. Once you can read a timing path and understand every line, you\u2019re dangerous.",
+        "<strong>Don\u2019t fear iteration.</strong> PD is not linear. You\u2019ll go back and forth between placement and timing, between routing and DRC, between IR and timing. That\u2019s normal. The goal is convergence, not perfection on the first pass.",
+        "<strong>Build your own scripts.</strong> Every experienced PD engineer has a personal toolkit \u2014 timing summary scripts, congestion checkers, QoR dashboards. Start building yours from day one.",
+      ]},
+
+      { type: "h2", text: "The Mindset Shift" },
+      { type: "p", text: "The biggest thing I wish someone told me: physical design is not about getting zero violations. It\u2019s about <strong>making the right trade-offs</strong>. Every fix has a cost. Upsizing a cell for timing? You just increased area and power. Adding a buffer? You consumed a routing track. Widening a power strap? You blocked signal routing." },
+      { type: "p", text: "The art of PD is knowing which trade-off to make, when to make it, and when to stop. That only comes with experience \u2014 and the willingness to break things and learn from it." },
+
+      { type: "hr" },
+      { type: "blockquote", text: "This is the first in a series about physical design. Next up: deep dive into floorplanning strategies \u2014 macro placement, power grid architecture, and the art of not painting yourself into a corner." },
+    ],
+  },
+  {
+    id: "timing-closure-tips",
+    title: "Timing Closure at 3nm \u2014 Lessons From the Trenches",
+    description: "Real challenges I faced doing timing closure at advanced nodes. WNS hunting, useful skew, and when to stop optimizing.",
+    date: "April 2026",
+    readTime: "12 min",
+    tags: ["Timing", "3nm", "PrimeTime"],
+    color: "magenta",
+    coverGradient: "linear-gradient(135deg, #ff00aa22, #ffd70022)",
+    content: [
+      { type: "h1", text: "Timing Closure at 3nm \u2014 Lessons From the Trenches" },
+      { type: "subtitle", text: "April 2026 \u00b7 12 min read" },
+      { type: "hr" },
+      { type: "p", text: "Timing closure at advanced nodes isn\u2019t just about fixing violations \u2014 it\u2019s about strategy. After working on multiple 3nm tapeouts, here\u2019s what I\u2019ve learned." },
+      { type: "h2", text: "The Reality of 3nm Timing" },
+      { type: "p", text: "At 3nm, everything is tighter:" },
+      { type: "ul", items: [
+        "<strong>Wire delay dominates</strong> over gate delay",
+        "<strong>On-chip variation (OCV)</strong> is brutal",
+        "<strong>Multi-corner multi-mode (MCMM)</strong> analysis is mandatory",
+        "You\u2019re fighting for <strong>single-digit picosecond</strong> margins",
+      ]},
+      { type: "h2", text: "Strategy 1: Know Your Critical Paths Early" },
+      { type: "p", text: "Don\u2019t wait until post-route to look at timing. After placement:" },
+      { type: "code", text: "report_timing -max_paths 50 -slack_type violated" },
+      { type: "p", text: "Categorize paths by type:" },
+      { type: "ul", items: [
+        "<strong>Reg-to-reg</strong> \u2014 your bread and butter",
+        "<strong>Input-to-reg</strong> \u2014 constrained by IO timing",
+        "<strong>Reg-to-output</strong> \u2014 often forgotten until signoff",
+      ]},
+      { type: "h2", text: "Strategy 2: Useful Skew is Your Friend" },
+      { type: "p", text: "CTS tries to minimize skew. But sometimes you WANT skew:" },
+      { type: "code", text: "set_clock_latency -source -early 0.05 [get_clocks clk]" },
+      { type: "p", text: "If the launch clock arrives slightly early and capture slightly late, you gain margin. Use it wisely." },
+      { type: "h2", text: "Strategy 3: The WNS Hunting Game" },
+      { type: "p", text: "When you\u2019re at -20ps WNS and nothing works:" },
+      { type: "ol", items: [
+        "Check if the cell is <strong>at minimum drive strength</strong> \u2014 upsize it",
+        "Check <strong>net RC</strong> \u2014 is the wire too long? Add a buffer",
+        "Check <strong>transition time</strong> \u2014 high fanout killing you? Clone the driver",
+        "Check <strong>crosstalk</strong> \u2014 neighboring nets switching? Shield or reroute",
+      ]},
+      { type: "h2", text: "Strategy 4: When to Stop" },
+      { type: "p", text: "This is the hardest lesson. Timing closure has diminishing returns." },
+      { type: "p", text: "If you\u2019re at <strong>-5ps WNS</strong> on one path in one corner:" },
+      { type: "ul", items: [
+        "Check if it\u2019s a real path or a false path",
+        "Check if AOCV/POCV gives you margin",
+        "Sometimes the answer is: <strong>it\u2019s good enough for signoff</strong>",
+      ]},
+      { type: "h2", text: "Tools I Use" },
+      { type: "table", headers: ["Tool", "Purpose"], rows: [
+        ["Fusion Compiler", "Implementation + optimization"],
+        ["PrimeTime", "Signoff STA"],
+        ["ECO flows", "Last-mile fixes"],
+      ]},
+      { type: "hr" },
+      { type: "blockquote", text: "Timing closure is part science, part art. The more tapeouts you do, the better your intuition gets." },
+    ],
+  },
+  {
+    id: "ir-drop-survival-guide",
+    title: "IR Drop Survival Guide \u2014 From Analysis to Fix",
+    description: "How I approach IR drop analysis, PG augmentation strategies, and the metal layer game. Practical tips from real tapeouts.",
+    date: "April 2026",
+    readTime: "10 min",
+    tags: ["IR Drop", "Power Grid", "RedHawk"],
+    color: "neon",
+    coverGradient: "linear-gradient(135deg, #00ff8822, #00f0ff22)",
+    content: [
+      { type: "h1", text: "IR Drop Survival Guide \u2014 From Analysis to Fix" },
+      { type: "subtitle", text: "April 2026 \u00b7 10 min read" },
+      { type: "hr" },
+      { type: "p", text: "IR drop is one of those things that can kill your chip if ignored. Here\u2019s my practical approach to analyzing and fixing IR issues." },
+      { type: "h2", text: "What is IR Drop?" },
+      { type: "p", text: "Ohm\u2019s law on silicon: <strong>V = I \u00d7 R</strong>" },
+      { type: "p", text: "Current flowing through the power grid creates a voltage drop. If the voltage at a cell drops too much, the cell slows down (or worse, doesn\u2019t switch correctly)." },
+      { type: "h2", text: "Static vs Dynamic IR Drop" },
+      { type: "p", text: "<strong>Static IR drop:</strong> Average current over time. Easier to fix." },
+      { type: "p", text: "<strong>Dynamic IR drop:</strong> Worst-case instantaneous current (e.g., clock edge when thousands of flip-flops toggle). Harder to fix." },
+      { type: "h2", text: "My Analysis Flow" },
+      { type: "h3", text: "Step 1: Run RedHawk-SC Analysis" },
+      { type: "p", text: "Generate the power grid report and identify hotspots:" },
+      { type: "ul", items: [
+        "Which instances have the worst voltage drop?",
+        "Which metal layers contribute most to the resistance?",
+      ]},
+      { type: "h3", text: "Step 2: Identify the Layer" },
+      { type: "p", text: "This is crucial. If M1-M3 are the problem, PG augmentation at M15 won\u2019t help." },
+      { type: "p", text: "Look at the resistance breakdown per layer for each violating instance." },
+      { type: "h3", text: "Step 3: PG Augmentation Strategy" },
+      { type: "p", text: "Don\u2019t blindly add straps everywhere:" },
+      { type: "ul", items: [
+        "Add straps <strong>only on layers that contribute to the drop</strong>",
+        "Add straps <strong>near the violating instances</strong>",
+        "Be careful: PG straps consume routing tracks",
+      ]},
+      { type: "h3", text: "Step 4: Verify Timing Impact" },
+      { type: "p", text: "After PG augmentation, re-run timing:" },
+      { type: "ul", items: [
+        "The new straps may block routing channels",
+        "The tool might detour signal nets, creating new timing violations",
+        "Always check <strong>both IR and timing</strong> together",
+      ]},
+      { type: "h2", text: "The Metal Layer Game" },
+      { type: "p", text: "At 3nm with 15+ metal layers:" },
+      { type: "ul", items: [
+        "<strong>Lower metals (M0-M3):</strong> High resistance, carry local power",
+        "<strong>Middle metals (M4-M8):</strong> Moderate resistance, intermediate distribution",
+        "<strong>Upper metals (M9-M15+):</strong> Low resistance, global power grid",
+      ]},
+      { type: "p", text: "The trick is ensuring power gets from the top metals down to the cells efficiently." },
+      { type: "h2", text: "Practical Tips" },
+      { type: "ol", items: [
+        "<strong>Check IR early</strong> \u2014 don\u2019t wait until signoff",
+        "<strong>Cluster analysis</strong> \u2014 group violations by region, not individual instances",
+        "<strong>Clock cells matter</strong> \u2014 clock buffers draw significant current, include them in IR analysis",
+        "<strong>Decap cells</strong> \u2014 place them near clock tree roots and high-activity regions",
+        "<strong>Iterate</strong> \u2014 IR fix \u2192 timing check \u2192 routing check \u2192 repeat",
+      ]},
+      { type: "hr" },
+      { type: "blockquote", text: "IR drop is a game of balance. Too little power grid = voltage problems. Too much = routing congestion. Finding the sweet spot is the art." },
+    ],
+  },
+];
