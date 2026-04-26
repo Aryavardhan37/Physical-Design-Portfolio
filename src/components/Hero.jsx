@@ -69,7 +69,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex gap-3 pt-2">
-            {["3nm", "14nm", "28nm", "32nm"].map((node) => (
+            {["130nm", "45nm", "32nm", "28nm", "14nm", "3nm"].map((node) => (
               <span key={node} className={`badge-${node} px-3 py-1 rounded-full text-xs font-mono font-bold`}>
                 {node}
               </span>

@@ -29,7 +29,7 @@ export const HERO_DATA = {
   greeting: "Hello, I am",
   name: "Aryavardhan Sharma",
   title: "ASIC Physical Design Engineer",
-  tagline: "Shipping silicon from 32nm to 3nm \u2014 not slides.",
+  tagline: "Shipping silicon from 130nm to 3nm \u2014 not slides.",
   description:
     "Built my foundation early, strengthened it through real SoC design work. Trained hands-on in synthesis, PnR \u2014 not just running tools, but fixing what breaks.",
   cta: "View My Work",
@@ -39,12 +39,12 @@ export const HERO_DATA = {
 export const ABOUT_DATA = {
   heading: "About Me",
   paragraphs: [
-    "I\u2019m an ASIC Physical Design Engineer at Einfochips (An Arrow Company), working across the full backend design flow with Synopsys and Cadence tools. My experience spans technology nodes from 32nm all the way down to 3nm.",
+    "I\u2019m an ASIC Physical Design Engineer at Einfochips (An Arrow Company), working across the full backend design flow with Synopsys and Cadence tools. My experience spans technology nodes from 130nm all the way down to 3nm.",
     "I graduated from Marwadi University, Rajkot with a B.Tech in Information & Communication Technology, specializing in Embedded Systems and VLSI, with a CGPA of 9.24/10.",
     "I care about clean timing, clean layouts, and being part of teams that ship silicon. Beyond physical design, I have a deep interest in IoT, AI, and research \u2014 with two IEEE publications and a government-granted copyright to my name.",
   ],
   highlights: [
-    { label: "Tech Nodes", value: "3nm \u2014 32nm" },
+    { label: "Tech Nodes", value: "130nm \u2014 3nm" },
     { label: "CGPA", value: "9.24 / 10" },
     { label: "Publications", value: "6 IEEE + 1\u00a9" },
     { label: "Current Role", value: "PD @ Einfochips" },
@@ -302,10 +302,12 @@ export const SOCIAL_LINKS = {
 };
 
 export const TECH_NODES = [
+  { node: "130nm", color: "#00ff88", description: "Open-source PDK" },
+  { node: "45nm", color: "#ffd700", description: "Mature process" },
+  { node: "32nm", color: "#ff00aa", description: "Legacy node" },
+  { node: "28nm", color: "#00f0ff", description: "Power-efficient" },
+  { node: "14nm", color: "#00ff88", description: "High performance" },
   { node: "3nm", color: "#ff00aa", description: "Most advanced node" },
-  { node: "14nm", color: "#00f0ff", description: "High performance" },
-  { node: "28nm", color: "#00ff88", description: "Power-efficient" },
-  { node: "32nm", color: "#ffd700", description: "Legacy mature" },
 ];
 
 // ═══════════════════════════════════════════════════════
