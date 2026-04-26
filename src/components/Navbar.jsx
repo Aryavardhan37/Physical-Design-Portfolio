@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { NAV_LINKS } from "../constants";
 import { useTheme } from "../context/ThemeContext";
 
-export function Navbar() {
+export default function Navbar() {
   const { isDark, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
