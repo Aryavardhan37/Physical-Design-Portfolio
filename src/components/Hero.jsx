@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { HERO_DATA } from "../constants";
 import { useTheme } from "../context/ThemeContext";
-
+import { useState, useEffect } from "react";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
@@ -12,7 +12,16 @@ const itemVariants = {
 };
 
 export default function Hero() {
-  const { isDark } = useTheme();
+ 
+const { isDark } = useTheme();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden" style={{ paddingTop: "80px" }}>
@@ -69,19 +78,48 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex gap-3 pt-2">
-            {["130nm", "45nm", "32nm", "28nm", "14nm", "3nm"].map((node) => (
-              <span key={node} className={`badge-${node} px-3 py-1 rounded-full text-xs font-mono font-bold`}>
-                {node}
-              </span>
-            ))}
+            {[
+  { node: "130nm", color: "#00ff88" },
+  { node: "45nm", color: "#ffd700" },
+  { node: "32nm", color: "#ff00aa" },
+  { node: "28nm", color: "#00f0ff" },
+  { node: "14nm", color: "#00ff88" },
+  { node: "3nm", color: "#ff00aa" },
+].map(({ node, color }) => (
+  <span
+    key={node}
+    className="px-3 py-1 rounded-full text-xs font-mono font-bold"
+    style={{
+      border: `1px solid ${color}66`,
+      color: color,
+      background: `${color}11`,
+    }}
+  >
+    {node}
+  </span>
+))}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator">
-        <div className="w-6 h-10 rounded-full flex items-start justify-center p-1.5" style={{ border: `2px solid ${isDark ? "#00f0ff44" : "#0066cc44"}` }}>
-          <div className="w-1.5 h-3 rounded-full animate-bounce" style={{ background: isDark ? "#00f0ff" : "#0066cc" }} />
+      
+      {/* Scroll indicator - fixed bottom center, fades on scroll */}
+      <div
+        className="fixed bottom-8 left-1/2 flex flex-col items-center gap-2 z-30 pointer-events-none"
+        style={{
+          transform: scrolled ? "translateX(-50%) translateY(20px)" : "translateX(-50%)",
+          opacity: scrolled ? 0 : 1,
+          transition: "opacity 0.7s ease, transform 0.7s ease",
+        }}
+      >
+        <div
+          className="w-6 h-10 rounded-full flex items-start justify-center p-1.5"
+          style={{ border: `2px solid ${isDark ? "#00f0ff44" : "#0066cc44"}` }}
+        >
+          <div
+            className="w-1.5 h-3 rounded-full animate-bounce"
+            style={{ background: isDark ? "#00f0ff" : "#0066cc" }}
+          />
         </div>
         <span className="text-xs font-mono tracking-wider" style={{ color: "var(--text-dim)" }}>
           Scroll to explore

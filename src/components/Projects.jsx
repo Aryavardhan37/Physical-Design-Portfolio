@@ -23,21 +23,22 @@ export default function Projects() {
   };
 
   // Interactive tilt on mouse move
-  const handleMouseMove = (e, cardEl) => {
-    if (!cardEl) return;
-    const rect = cardEl.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-    cardEl.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-  };
+ const handleMouseMove = (e) => {
+  const cardEl = e.currentTarget;
+  const rect = cardEl.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+  const rotateX = ((y - centerY) / 20);
+  const rotateY = ((centerX - x) / 20);
+  cardEl.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+};
 
-  const handleMouseLeave = (cardEl) => {
-    if (cardEl) cardEl.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
-  };
+const handleMouseLeave = (e) => {
+  const cardEl = e.currentTarget;
+  cardEl.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+};
 
   return (
     <section id="projects" ref={sectionRef} className="relative py-32 overflow-hidden">
@@ -58,11 +59,11 @@ export default function Projects() {
               <div
                 key={project.id}
                 ref={el => cardRef = el}
-                className="reveal glass rounded-2xl overflow-hidden tilt-card"
-                style={{ borderColor: "var(--glass-border)", transitionDelay: `${i * 120}ms` }}
-                onMouseMove={(e) => handleMouseMove(e, cardRef)}
-                onMouseLeave={() => handleMouseLeave(cardRef)}
-              >
+                className="reveal glass rounded-2xl overflow-hidden tilt-card card-hover"
+                style={{ transitionDelay: `${i * 120}ms`, transition: "transform 0.15s ease-out" }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                >
                 <div className="h-1 w-full" style={{ background: c.accent }} />
                 <div className="p-8">
                   <h3 className="text-xl font-bold mb-1" style={{ color: "var(--text)" }}>{project.title}</h3>

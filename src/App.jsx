@@ -26,13 +26,18 @@ function Portfolio() {
   useEffect(() => {
     if (!introComplete) return;
     const handleScroll = () => {
-      const maxScroll = window.innerHeight * 5;
+      const maxScroll = window.innerHeight * 10;
       const progress = Math.min(window.scrollY / maxScroll, 1);
       setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [introComplete]);
+
+  // Chip opacity: visible on hero, fades as you scroll into content
+  const chipOpacity = scrollProgress > 0.8
+    ? 0
+    : Math.max(0.05, (isDark ? 0.75 : 0.65) - scrollProgress * 0.9);
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
@@ -50,13 +55,14 @@ function Portfolio() {
         >
           <Navbar />
 
+          {/* 3D Chip Background — always visible */}
           <div
             className="fixed inset-0 z-0 flex items-center justify-center pointer-events-none"
             style={{
-              opacity: scrollProgress > 0.4
-                ? 0
-                : Math.max(0.06, (isDark ? 0.7 : 0.5) - scrollProgress * 1.8),
-              transition: "opacity 0.15s ease",
+              opacity: isDark
+                ? Math.max(0.12, 0.5 - scrollProgress * 0.35)
+                : Math.max(0.08, 0.35 - scrollProgress * 0.25),
+              transition: "opacity 0.4s ease",
             }}
           >
             <div className="w-[80vmin] h-[80vmin] max-w-[750px] max-h-[750px]">
@@ -64,6 +70,7 @@ function Portfolio() {
             </div>
           </div>
 
+          {/* Main content */}
           <main ref={mainRef} className="relative z-20">
             <Hero />
             <About />
@@ -75,6 +82,8 @@ function Portfolio() {
             <Achievements />
             <Contact />
           </main>
+          
+
           <Footer />
         </motion.div>
       )}

@@ -135,7 +135,7 @@ export const SKILLS_DATA = [
     category: "PDKs & Flows",
     icon: "\ud83c\udfed",
     color: "magenta",
-    skills: ["SkyWater 130nm", "TritonCTS", "TritonRoute", "OpenTimer", "RTL-to-GDSII"],
+    skills: ["SkyWater 130nm", "Oklahoma State University 45nm", "TritonCTS", "TritonRoute", "OpenTimer", "RTL-to-GDSII"],
   },
   {
     category: "Soft Skills",
