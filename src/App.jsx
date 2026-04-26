@@ -17,6 +17,7 @@ import BlogReader from "./components/BlogReader";
 import ChipFloorplan from "./components/three/ChipFloorplan";
 import { useTheme } from "./context/ThemeContext";
 
+
 function Portfolio() {
   const [introComplete, setIntroComplete] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -33,6 +34,7 @@ function Portfolio() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [introComplete]);
+
 
   // Chip opacity: visible on hero, fades as you scroll into content
   const chipOpacity = scrollProgress > 0.8
