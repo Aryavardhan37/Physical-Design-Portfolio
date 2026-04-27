@@ -27,7 +27,7 @@ function Portfolio() {
   useEffect(() => {
     if (!introComplete) return;
     const handleScroll = () => {
-      const maxScroll = window.innerHeight * 10;
+      const maxScroll = window.innerHeight * 5;
       const progress = Math.min(window.scrollY / maxScroll, 1);
       setScrollProgress(progress);
     };
@@ -37,9 +37,9 @@ function Portfolio() {
 
 
   // Chip opacity: visible on hero, fades as you scroll into content
-  const chipOpacity = scrollProgress > 0.8
-    ? 0
-    : Math.max(0.05, (isDark ? 0.75 : 0.65) - scrollProgress * 0.9);
+const chipOpacity = isDark
+  ? Math.max(0.5, 0.9 - scrollProgress * 0.3)
+  : Math.max(0.4, 0.75 - scrollProgress * 0.25);
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
@@ -61,10 +61,7 @@ function Portfolio() {
           <div
             className="fixed inset-0 z-0 flex items-center justify-center pointer-events-none"
             style={{
-              opacity: isDark
-                ? Math.max(0.12, 0.5 - scrollProgress * 0.35)
-                : Math.max(0.08, 0.35 - scrollProgress * 0.25),
-              transition: "opacity 0.4s ease",
+              opacity: chipOpacity,
             }}
           >
             <div className="w-[80vmin] h-[80vmin] max-w-[750px] max-h-[750px]">

@@ -67,13 +67,13 @@ export default function Navbar() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Aryavardhan
+              AS
             </span>
             <span
               className="text-[10px] font-mono tracking-[0.25em] uppercase leading-tight mt-0.5"
               style={{ color: isDark ? "#00f0ff88" : "#0066cc88" }}
             >
-              Physical Design
+              Physical Designer
             </span>
           </div>
         </button>
