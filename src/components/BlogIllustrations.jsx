@@ -768,8 +768,7 @@ export function RoutingAnim() {
     }
   });
 
-  // Animate: show one layer at a time, then its via drops in
-  // Total steps: layer0, via0, layer1, via1, ... layer7, done, pause, reset
+
   const totalSteps = layers.length * 2 + 2; // +1 for final hold, +1 for reset gap
 
   useEffect(() => {

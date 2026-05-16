@@ -361,7 +361,7 @@ export const GLOBE_PINS = [
 // Resolved in BlogReader.jsx via ILLUSTRATION_MAP
 // ═══════════════════════════════════════════════════════
 
-export const BLOGS_DATA = [
+/*export const BLOGS_DATA = [
   {
     id: "asic-pd-flow-beginners",
     title: "ASIC Physical Design Flow \u2014 A Beginner\u2019s Roadmap",
@@ -369,6 +369,7 @@ export const BLOGS_DATA = [
     date: "April 2026",
     readTime: "8 min",
     tags: ["Physical Design", "ASIC", "Beginners"],
+    featured: true,
     color: "cyan",
     coverGradient: "linear-gradient(135deg, #00f0ff22, #00ff8822)",
     content: [
@@ -452,29 +453,57 @@ export const BLOGS_DATA = [
         "<strong>Useful skew applied</strong> \u2014 Did the tool intentionally skew any paths? Understand where and why \u2014 this borrows margin from one path to give to another",
       ]},
 
-      { type: "h3", text: "5. Routing \u2014 Laying the Wires" },
-      { type: "p", text: "Routing is where the metal wires are drawn to connect all the cells. If placement decided where the buildings go, routing builds the roads between them." },
-      { type: "p", text: "At advanced nodes (3nm, 5nm), routing is the <strong>hardest part</strong> of PD:" },
-      { type: "ul", items: [
-        "<strong>Metal layers are thin</strong> \u2014 Higher resistance means more delay and IR drop per unit length",
-        "<strong>DRC rules are insane</strong> \u2014 Minimum width, minimum spacing, via enclosure, end-of-line rules \u2014 hundreds of rules per layer",
-        "<strong>Crosstalk is real</strong> \u2014 Wires running parallel can capacitively couple and cause timing failures",
-        "<strong>Via resistance matters</strong> \u2014 At 3nm, a single via can add significant resistance. Multiply by millions of vias...",
-        "<strong>Limited tracks</strong> \u2014 Each metal layer has a fixed number of routing tracks. Run out, and you\u2019re stuck",
-      ]},
-      { type: "p", text: "<strong>Analogy:</strong> Think of it as a massive city with 15 levels of highways stacked on top of each other (metal layers M0\u2013M15). Lower levels are narrow local streets (high resistance, short connections). Upper levels are interstate highways (low resistance, long global connections). Vias are the ramps connecting one level to another." },
-      { type: "illustration", component: "RoutingAnim" },
-      { type: "p", text: "<strong>What to check after routing:</strong>" },
-      { type: "ul", items: [
-        "<strong>DRC violations</strong> \u2014 Spacing, width, via enclosure errors. Zero DRC is the goal for tapeout. Run incremental ECO routing to fix, don\u2019t rip up everything",
-        "<strong>WNS / TNS (post-route)</strong> \u2014 Timing changes after routing because now you have real wire RC. This is the most accurate pre-signoff timing",
-        "<strong>Antenna violations</strong> \u2014 Long metal wires can accumulate charge during manufacturing and damage gate oxide. Check and insert diodes",
-        "<strong>Crosstalk delta delay</strong> \u2014 How much timing is shifting due to coupling between adjacent nets? SI (Signal Integrity) analysis catches this",
-        "<strong>Shorts / opens</strong> \u2014 Any nets that are shorted together or not connected at all? These are fatal",
-        "<strong>Via count and doubling</strong> \u2014 Single vias are reliability risks. Check via doubling percentage \u2014 higher is better (target >90%)",
-        "<strong>Overflow / unrouted nets</strong> \u2014 Any nets the router couldn\u2019t complete? These need manual intervention or congestion relief",
-        "<strong>Metal layer utilization</strong> \u2014 Which layers are maxed out? Helps you decide where to add PG straps vs. keep for signal routing",
-      ]},
+      { type: "h3", text: "5. Routing — Global vs Detailed Routing" },
+
+{ type: "p", text: "Routing is where abstract placement turns into real metal wires. The router’s job is to connect millions of pins while obeying design rules, minimizing congestion, and meeting timing." },
+
+{ type: "p", text: "Modern ASIC routers work in two major stages: <strong>Global Routing</strong> and <strong>Detailed Routing</strong>. These stages solve very different problems." },
+
+{ type: "h4", text: "Global Routing — Planning the Path" },
+{ type: "p", text: "Global routing does <strong>not</strong> draw exact wires. Instead, it divides the chip into routing tiles (GCells) and answers one question:" },
+{ type: "blockquote", text: "Which regions of the chip should this net pass through?" },
+
+{ type: "ul", items: [
+  "Chip is divided into coarse routing grids (GCells)",
+  "Each net is assigned a rough path across these grids",
+  "Congestion is estimated, not finalized",
+  "No exact wire widths or via locations yet",
+]},
+
+{ type: "p", text: "At this stage, routers assume <strong>Manhattan routing</strong> — wires can only run horizontally or vertically. Diagonal routing is avoided because it is harder to manufacture and violates most design rules." },
+
+{ type: "h4", text: "Manhattan Distance — How Routers Think" },
+{ type: "p", text: "Routing cost is often estimated using <strong>Manhattan distance</strong>:" },
+
+{ type: "code", text: "Manhattan Distance = |x₁ − x₂| + |y₁ − y₂|" },
+
+{ type: "p", text: "This matches how wires are actually routed on silicon — first move horizontally, then vertically (or vice‑versa)." },
+
+{ type: "p", text: "<strong>Why routers love Manhattan distance:</strong>" },
+{ type: "ul", items: [
+  "Matches preferred routing directions of metal layers",
+  "Predictable RC estimation",
+  "Simpler DRC compliance",
+  "Scales well for millions of nets",
+]},
+
+{ type: "h4", text: "Detailed Routing — Drawing Real Wires" },
+{ type: "p", text: "Detailed routing converts global routes into <strong>real metal shapes</strong>." },
+
+{ type: "ul", items: [
+  "Exact metal layers selected (M1–M15)",
+  "Wire widths and spacing obey foundry DRC",
+  "Via locations inserted (V1, V2, …)",
+  "Preferred direction enforced per layer",
+  "DRC-clean layout is the goal",
+]},
+
+{ type: "p", text: "This is where routing becomes extremely difficult at advanced nodes. Even a single DRC violation can block tapeout." },
+
+{ type: "p", text: "<strong>Reality:</strong> Most routing failures come from poor floorplanning or placement congestion — not the router itself." },
+
+{ type: "illustration", component: "RoutingAnim" },
+
 
       { type: "h3", text: "6. Signoff \u2014 The Final Inspection" },
       { type: "p", text: "Signoff is the building inspection before the city opens. You\u2019re checking <strong>everything</strong> \u2014 structural integrity, fire safety, plumbing, electrical. In chip terms:" },
@@ -538,6 +567,7 @@ export const BLOGS_DATA = [
     readTime: "12 min",
     tags: ["Timing", "3nm", "PrimeTime"],
     color: "magenta",
+    featured: false,
     coverGradient: "linear-gradient(135deg, #ff00aa22, #ffd70022)",
     content: [
       { type: "h1", text: "Timing Closure at 3nm \u2014 Lessons From the Trenches" },
@@ -599,6 +629,7 @@ export const BLOGS_DATA = [
     readTime: "10 min",
     tags: ["IR Drop", "Power Grid", "RedHawk"],
     color: "neon",
+    featured: false,
     coverGradient: "linear-gradient(135deg, #00ff8822, #00f0ff22)",
     content: [
       { type: "h1", text: "IR Drop Survival Guide \u2014 From Analysis to Fix" },
@@ -655,4 +686,112 @@ export const BLOGS_DATA = [
       { type: "blockquote", text: "IR drop is a game of balance. Too little power grid = voltage problems. Too much = routing congestion. Finding the sweet spot is the art." },
     ],
   },
+];*/
+export const BLOGS_DATA = [
+  {
+    id: "asic-pd-flow-beginners",
+    title: "ASIC Physical Design Flow — A Beginner’s Roadmap",
+    description: "Everything I wish someone told me when I started in PD. From floorplanning to signoff, the real flow explained simply.",
+    date: "April 2026",
+    readTime: "8 min",
+    tags: ["Physical Design", "ASIC", "Beginners"],
+    featured: true,
+    color: "cyan",
+    coverGradient: "linear-gradient(135deg, #00f0ff22, #00ff8822)",
+    content: [
+      { type: "h1", text: "ASIC Physical Design Flow — A Beginner’s Roadmap" },
+      { type: "subtitle", text: "April 2026 · 8 min read" },
+      { type: "hr" },
+
+      {
+        type: "p",
+        text: "When I started my journey in physical design, the sheer number of steps felt overwhelming. But understanding the flow step by step changes everything."
+      },
+
+      {
+        type: "p",
+        text: "Think of it like building a city. You start with a blueprint ([RTL]), then place buildings, create roads, and finally ensure everything is safe to operate."
+      },
+
+      { type: "h2", text: "The Big Picture" },
+
+      {
+        type: "p",
+        text: "Physical design is the bridge between [RTL] (your design description) and [GDSII] (what gets manufactured on silicon)."
+      },
+
+      {
+        type: "p",
+        text: "Every step ensures the design meets timing, power, and area constraints — turning an abstract idea into a physical chip."
+      },
+
+      { type: "illustration", component: "RTLtoGDSII" },
+
+      { type: "h2", text: "The Flow" },
+
+      { type: "h3", text: "1. Synthesis — Turning Code Into Gates" },
+
+      {
+        type: "p",
+        text: "In [ASIC] design, synthesis converts [RTL] into a gate-level representation using standard cell libraries."
+      },
+
+      {
+        type: "p",
+        text: "At this stage, the tool has no idea about physical placement — it only understands logic relationships."
+      },
+
+      { type: "h3", text: "2. Floorplanning — Laying Out the City" },
+
+      {
+        type: "p",
+        text: "Floorplanning defines how major blocks are arranged and how power is distributed across the chip."
+      },
+
+      { type: "illustration", component: "FloorplanViz" },
+
+      { type: "h3", text: "3. Placement — Filling the City" },
+
+      {
+        type: "p",
+        text: "Placement decides where each standard cell is located, while trying to keep timing paths short and congestion low."
+      },
+
+      { type: "illustration", component: "PlacementAnim" },
+
+      { type: "h3", text: "4. Clock Tree Synthesis ([CTS]) — The Heartbeat" },
+
+      {
+        type: "p",
+        text: "[CTS] builds the clock network so that the clock reaches all flip-flops with minimal skew."
+      },
+
+      { type: "illustration", component: "ClockTreeViz" },
+
+      { type: "h3", text: "5. Routing — Wiring the Chip" },
+
+      {
+        type: "p",
+        text: "Routing connects all components using metal layers, following strict design rules."
+      },
+
+      { type: "illustration", component: "RoutingAnim" },
+
+      { type: "h3", text: "6. Signoff — Final Verification" },
+
+      {
+        type: "p",
+        text: "Signoff ensures the chip meets all checks like [DRC], [LVS], and timing verification before fabrication."
+      },
+
+      { type: "illustration", component: "SignoffChecklist" },
+
+      { type: "hr" },
+
+      {
+        type: "blockquote",
+        text: "Understanding the flow is more important than memorizing steps. That’s what separates engineers from tool users."
+      },
+    ],
+  }
 ];

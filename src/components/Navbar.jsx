@@ -22,15 +22,20 @@ export default function Navbar() {
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); }),
-      { threshold: 0.3, rootMargin: "-80px 0px" }
-    );
-    NAV_LINKS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const handleActiveSection = () => {
+      const scrollY = window.scrollY + window.innerHeight / 3;
+      let current = "";
+      NAV_LINKS.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) {
+          current = id;
+        }
+      });
+      setActiveSection(current);
+    };
+    window.addEventListener("scroll", handleActiveSection, { passive: true });
+    handleActiveSection();
+    return () => window.removeEventListener("scroll", handleActiveSection);
   }, []);
 
   const scrollTo = useCallback((id) => {
