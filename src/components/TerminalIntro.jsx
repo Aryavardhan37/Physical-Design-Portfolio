@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const LINES = [
-  { text: "synopsys_pd> source asic_profile.tcl", color: "#00ff88", delay: 50, pause: 400 },
+  { text: "lazarous_pitt_pd> source asic_profile.tcl", color: "#00ff88", delay: 50, pause: 400 },
   { text: "Loading physical design data...", color: "#00ff88", delay: 30, pause: 500 },
   { text: "Extracting IO & Logic structures...", color: "#9ca3af", delay: 30, pause: 400 },
   { text: "Checking timing constraints: [OK]", color: "#9ca3af", delay: 30, pause: 250, hl: "[OK]", hlc: "#00f0ff" },

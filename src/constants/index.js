@@ -15,7 +15,7 @@ export const NAV_LINKS = [
 ];
 
 export const TERMINAL_LINES = [
-  { text: "synopsys_pd> source asic_profile.tcl", delay: 55, color: "#00ff88", pauseAfter: 400 },
+  { text: "lazarous_pitt_pd> source asic_profile.tcl", delay: 55, color: "#00ff88", pauseAfter: 400 },
   { text: "Loading physical design data...", delay: 35, color: "#9ca3af", pauseAfter: 600 },
   { text: "Extracting IO & Logic structures...", delay: 35, color: "#9ca3af", pauseAfter: 500 },
   { text: "Checking timing constraints: [OK]", delay: 35, color: "#9ca3af", pauseAfter: 300, highlight: "[OK]", highlightColor: "#00f0ff" },
@@ -117,7 +117,7 @@ export const SKILLS_DATA = [
     category: "FPGA & Simulation",
     icon: "\ud83d\udd2c",
     color: "gold",
-    skills: ["Xilinx Vivado", "ModelSim", "Icarus Verilog", "GHDL", "Xilinx Nexys 4 DDR", "Altera FPGA"],
+    skills: ["Xilinx Vivado", "ModelSim", "Icarus Verilog", "Xilinx Nexys 4 DDR", "Altera Cyclone II"],
   },
   {
     category: "Dev & Infrastructure",
@@ -135,13 +135,13 @@ export const SKILLS_DATA = [
     category: "PDKs & Flows",
     icon: "\ud83c\udfed",
     color: "magenta",
-    skills: ["SkyWater 130nm", "Oklahoma State University 45nm", "TritonCTS", "TritonRoute", "OpenTimer", "RTL-to-GDSII"],
+    skills: ["SkyWater 130nm", "Oklahoma State University 45nm", "Synospsys 32nm EDK", "Synopsys 14nm", "TSMC 3nm", "Open-Source Physical Design Flow"],
   },
   {
     category: "Soft Skills",
     icon: "\ud83e\udde0",
     color: "gold",
-    skills: ["Problem Solving", "Logical Thinking", "Communication", "Team Collaboration", "Time Management"],
+    skills: ["Speaker & Presenter", "Problem Solving", "Logical Thinking", "Communication", "Team Collaboration", "Time Management"],
   },
 ];
 export const PROJECTS_DATA = [
@@ -735,11 +735,16 @@ export const BLOGS_DATA = [
         type: "p",
         text: "In [ASIC] design, synthesis converts [RTL] into a gate-level representation using standard cell libraries."
       },
-
+      { type: "p", text: "But synthesis is not just a translation step — it is an optimization engine. The tool explores multiple implementations of the same logic to meet timing, area, and power constraints defined by your SDC." },
+      { type: "p", text: "Once the logic is built, the tool performs optimizations like constant propagation, logic restructuring, and redundancy removal. Only after this, it maps the optimized logic into real standard cells from the technology library." },
+      { type: "p", text: "<strong>Analogy:</strong> Think of it like expressing a math equation in its simplest form before choosing the most efficient calculator to compute it." },
+      { type: "p", text: "Internally, synthesis first converts [RTL] into a generic representation (often referred to as GTECH), which is completely technology independent. At this stage, the tool cares only about logical correctness — not timing or physical effects." },
       {
         type: "p",
         text: "At this stage, the tool has no idea about physical placement — it only understands logic relationships."
       },
+      { type: "illustration", component: "SynthesisAnim" },
+
 
       { type: "h3", text: "2. Floorplanning — Laying Out the City" },
 
@@ -747,6 +752,21 @@ export const BLOGS_DATA = [
         type: "p",
         text: "Floorplanning defines how major blocks are arranged and how power is distributed across the chip."
       },
+      { type: "p", text: "Once macro placement is done, the next critical step is inserting physical-only cells. These are cells that do not affect logic but are absolutely required for manufacturing and reliability." },
+
+{ type: "h4", text: "Physical-Only Cell Insertion" },
+
+{ type: "ul", items: [
+  "Tap Cells — connect substrate/well to power (VDD/VSS) to avoid latch-up",
+  "Endcap Cells — placed at the edges of standard cell rows to maintain layout continuity",
+  "Well Tie Cells — ensure proper biasing of wells across the design",
+  "Filler Cells — used later to fill empty gaps and maintain DRC continuity",
+]},
+
+{ type: "p", text: "Analogy: Think of these like the foundation bolts and grounding wires of a building. They don’t change how the building looks, but without them, the structure is unstable." },
+
+{ type: "p", text: "Important: If you skip or incorrectly insert these cells, you can pass all logical checks but still fail fabrication due to latch-up or DRC violations." },
+      
 
       { type: "illustration", component: "FloorplanViz" },
 

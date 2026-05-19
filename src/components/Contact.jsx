@@ -55,7 +55,7 @@ export default function Contact() {
               Let's build something <span style={{ color: accent }}>together</span>.
             </h3>
             <div className="glass rounded-xl p-6 mb-8 font-mono text-sm leading-loose" style={{ color: "var(--text-muted)" }}>
-              <span style={{ color: accentGreen }}>synopsys_pd&gt;</span>{" "}
+              <span style={{ color: accentGreen }}>lazarous_pitt_pd&gt;</span>{" "}
               <span>connect --engineer Aryavardhan</span><br />
               <span style={{ color: "var(--text-dim)" }}>Establishing secure link...</span><br />
               <span>Connection status: </span>

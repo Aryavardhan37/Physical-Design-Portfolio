@@ -9,11 +9,13 @@ import {
   ClockTreeViz,
   RoutingAnim,
   SignoffChecklist,
+  SynthesisAnim,
 } from "./BlogIllustrations";
 import InfoTerm from "./InfoTerm";
 
 const ILLUSTRATION_MAP = {
   RTLtoGDSII,
+  SynthesisAnim,
   FloorplanViz,
   PlacementAnim,
   ClockTreeViz,

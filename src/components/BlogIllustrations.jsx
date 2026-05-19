@@ -137,7 +137,97 @@ export function RTLtoGDSII() {
     </div>
   );
 }
+/* ═══════ Synthesis Visualization ═══════ */
+export function SynthesisAnim() {
+  const { isDark } = useTheme();
+  const [stage, setStage] = useState(0);
 
+  const accent = isDark ? "#00f0ff" : "#0066cc";
+  const green = isDark ? "#00ff88" : "#009955";
+  const magenta = "#ff00aa";
+  const yellow = "#ffd700";
+  const dim = isDark ? "#1a1a2e" : "#d0d0d8";
+
+  // 0 → RTL
+  // 1 → GTECH
+  // 2 → Optimized
+  // 3 → Mapped Cells
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setStage((s) => (s + 1) % 4);
+    }, 2200);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <svg viewBox="0 0 100 80" className="w-full max-w-md mx-auto my-8">
+
+      {/* RTL */}
+      {stage === 0 && (
+        <>
+          <rect x="20" y="25" width="60" height="30" rx="3"
+            fill="none" stroke={accent} strokeWidth="1"
+          />
+          <text x="50" y="45" textAnchor="middle" fontSize="3" fill={accent}>
+            RTL
+          </text>
+          <text x="50" y="52" textAnchor="middle" fontSize="2" fill={dim}>
+            y = (a & b) | (~c & d)
+          </text>
+        </>
+      )}
+
+      {/* GTECH */}
+      {stage === 1 && (
+        <>
+          <circle cx="35" cy="40" r="5" fill={green} opacity="0.7" />
+          <circle cx="65" cy="40" r="5" fill={green} opacity="0.7" />
+          <circle cx="50" cy="25" r="5" fill={green} opacity="0.7" />
+          <line x1="35" y1="40" x2="50" y2="25" stroke={green} />
+          <line x1="65" y1="40" x2="50" y2="25" stroke={green} />
+          <text x="50" y="65" textAnchor="middle" fontSize="2.5" fill={green}>
+            GTECH (Generic Logic)
+          </text>
+        </>
+      )}
+
+      {/* Optimization */}
+      {stage === 2 && (
+        <>
+          <circle cx="40" cy="40" r="5" fill={magenta} opacity="0.8" />
+          <circle cx="60" cy="40" r="5" fill={magenta} opacity="0.8" />
+          <line x1="40" y1="40" x2="60" y2="40" stroke={magenta} strokeWidth="1.5" />
+          <text x="50" y="65" textAnchor="middle" fontSize="2.5" fill={magenta}>
+            Optimized Logic
+          </text>
+        </>
+      )}
+
+      {/* Technology Mapping */}
+      {stage === 3 && (
+        <>
+          <rect x="30" y="30" width="12" height="10" fill={yellow} rx="1" />
+          <rect x="50" y="30" width="12" height="10" fill={yellow} rx="1" />
+          <rect x="40" y="45" width="12" height="10" fill={yellow} rx="1" />
+          
+          <line x1="42" y1="30" x2="46" y2="45" stroke={yellow} />
+          <line x1="56" y1="30" x2="52" y2="45" stroke={yellow} />
+
+          <text x="50" y="65" textAnchor="middle" fontSize="2.5" fill={yellow}>
+            Standard Cells (.lib)
+          </text>
+        </>
+      )}
+
+      {/* Stage label */}
+      <text x="50" y="75" textAnchor="middle" fontSize="3" fill={accent}>
+        {["RTL Code", "Generic Logic (GTECH)", "Boolean Optimization", "Library Mapping"][stage]}
+      </text>
+
+    </svg>
+  );
+}
 /* ═══════ Floorplan Visualization ═══════ */
 export function FloorplanViz() {
   const { isDark } = useTheme();
@@ -156,20 +246,21 @@ export function FloorplanViz() {
 
   // Phases: 0=Die, 1=Power Rings, 2=Straps, 3=Rails, 4=Macros, 5=Std Cell + IO
   const phaseLabels = [
-    "Die boundary defined",
-    "Power rings (VDD/VSS) on upper metals",
-    "Power straps across the core",
-    "Follow pins / Standard cell rails (M1)",
-    "Macro placement with constraints/guidelines",
-    "Floorplan complete \u2713",
-  ];
-  const phaseColors = ["#555", ringColor, strapColor, railColor, macroColor1, "#00ff88"];
-  const pillLabels = ["Die", "Rings", "Straps", "Rails", "Macros", "Done"];
+  "Die boundary defined",
+  "Power rings (VDD/VSS) on upper metals",
+  "Power straps across the core",
+  "Follow pins / Standard cell rails (M1)",
+  "Macro placement with constraints/guidelines",
+  "Physical-only cells (tap/endcap/well-tie)",
+  "Floorplan complete ✓",
+];
+  const phaseColors = ["#555", ringColor, strapColor, railColor, macroColor1, strapColor, "#00ff88"];
+  const pillLabels = ["Die", "Rings", "Straps", "Rails", "Macros", "PhysCells", "Done"];
 
   useEffect(() => {
-    const timings = [2000, 2500, 2500, 2500, 3000, 3000];
+    const timings = [2000, 2500, 2500, 2500, 3000, 2500, 3000];
     const id = setTimeout(() => {
-      setPhase((p) => (p + 1) % 6);
+      setPhase((p) => (p + 1) % 7);
       setTick((t) => t + 1);
     }, timings[phase]);
     return () => clearTimeout(id);
@@ -414,9 +505,73 @@ export function FloorplanViz() {
             </g>
           );
         })}
+{/* ═══ PHASE 5: Physical-only cells (tap / endcap / well-tie) ═══ */}
+{show(5) && (
+  <>
+    {/* Endcap cells at row edges (left/right) */}
+    {Array.from({ length: 22 }, (_, i) => {
+      const y = 24 + i * 3.2;
+      if (y > 89) return null;
+      return (
+        <g key={`endcap_${i}`}>
+          <rect
+            x="9"
+            y={y - 0.35}
+            width="1.6"
+            height="0.7"
+            rx="0.2"
+            fill={strapColor}
+            opacity={isCurrent(5) ? 0.85 : 0.55}
+          />
+          <rect
+            x="89.4"
+            y={y - 0.35}
+            width="1.6"
+            height="0.7"
+            rx="0.2"
+            fill={strapColor}
+            opacity={isCurrent(5) ? 0.85 : 0.55}
+          />
+        </g>
+      );
+    })}
 
+    {/* Tap / well-tie cells periodic inside core */}
+    {Array.from({ length: 7 }, (_, r) =>
+      Array.from({ length: 9 }, (_, c) => {
+        const x = 14 + c * 8.5;
+        const y = 22 + r * 10.5;
+        return (
+          <rect
+            key={`tap_${r}_${c}`}
+            x={x}
+            y={y}
+            width="1.3"
+            height="1.3"
+            rx="0.3"
+            fill={strapColor}
+            opacity={isCurrent(5) ? 0.8 : 0.45}
+          />
+        );
+      })
+    )}
+
+    {/* Label */}
+    <text
+      x="50"
+      y="101"
+      textAnchor="middle"
+      fontSize="2.1"
+      fontFamily="monospace"
+      fill={strapColor}
+      opacity={isCurrent(5) ? 0.8 : 0.45}
+    >
+      Tap / Endcap / Well-tie insertion
+    </text>
+  </>
+)}
         {/* ═══ PHASE 5: Std Cell Area + channel markers ═══ */}
-        {show(5) && (
+        {show(6) && (
           <>
             {/* Std cell region */}
             <rect x="28" y="42" width="40" height="36" rx="1"
@@ -455,7 +610,7 @@ export function FloorplanViz() {
           <div
             className="h-full rounded-full transition-all duration-700"
             style={{
-              width: `${(phase / 5) * 100}%`,
+              width: `${(phase / 6) * 100}%`,
               background: `linear-gradient(90deg, ${ringColor}, ${strapColor}, ${railColor}, ${macroColor1}, #00ff88)`,
             }}
           />
