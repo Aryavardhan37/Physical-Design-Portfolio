@@ -14,6 +14,7 @@ import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import BlogReader from "./components/BlogReader";
+import Materials from "./components/Materials";
 import ChipFloorplan from "./components/three/ChipFloorplan";
 import { useTheme } from "./context/ThemeContext";
 
@@ -95,6 +96,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Portfolio />} />
+        <Route path="/materials" element={<Materials />} />
         <Route path="/blog/:slug" element={<BlogReader />} />
       </Routes>
     </BrowserRouter>

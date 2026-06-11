@@ -1,9 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { NAV_LINKS } from "../constants";
 import { useTheme } from "../context/ThemeContext";
 
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isVisible, setIsVisible] = useState(true);
@@ -23,9 +26,15 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleActiveSection = () => {
+      if (location.pathname !== "/") {
+        setActiveSection("");
+        return;
+      }
+
       const scrollY = window.scrollY + window.innerHeight / 3;
       let current = "";
-      NAV_LINKS.forEach(({ id }) => {
+      NAV_LINKS.forEach(({ id, path }) => {
+        if (path) return;
         const el = document.getElementById(id);
         if (el && el.offsetTop <= scrollY) {
           current = id;
@@ -33,16 +42,32 @@ export default function Navbar() {
       });
       setActiveSection(current);
     };
+
     window.addEventListener("scroll", handleActiveSection, { passive: true });
     handleActiveSection();
     return () => window.removeEventListener("scroll", handleActiveSection);
-  }, []);
+  }, [location.pathname]);
 
-  const scrollTo = useCallback((id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    setIsOpen(false);
-  }, []);
+  const scrollTo = useCallback(
+    (item) => {
+      if (item.path) {
+        navigate(item.path);
+        setIsOpen(false);
+        return;
+      }
+
+      if (location.pathname !== "/") {
+        window.location.href = `/#${item.id}`;
+        setIsOpen(false);
+        return;
+      }
+
+      const el = document.getElementById(item.id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsOpen(false);
+    },
+    [navigate, location.pathname]
+  );
 
   const accentColor = isDark ? "#00f0ff" : "#0066cc";
 
@@ -85,15 +110,24 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map(({ id, label }) => (
+          {NAV_LINKS.map((item) => (
             <button
-              key={id}
-              onClick={() => scrollTo(id)}
+              key={item.id}
+              onClick={() => scrollTo(item)}
               className="px-4 py-2 text-sm font-medium rounded-full transition-all duration-300"
               style={{
-                color: activeSection === id ? accentColor : "var(--text-muted)",
+                color:
+                  item.path
+                    ? location.pathname === item.path
+                      ? accentColor
+                      : "var(--text-muted)"
+                    : activeSection === item.id
+                    ? accentColor
+                    : "var(--text-muted)",
                 background:
-                  activeSection === id
+                  (item.path
+                    ? location.pathname === item.path
+                    : activeSection === item.id)
                     ? isDark
                       ? "rgba(0, 240, 255, 0.08)"
                       : "rgba(0, 102, 204, 0.08)"
@@ -101,10 +135,11 @@ export default function Navbar() {
               }}
               onMouseEnter={(e) => (e.target.style.color = accentColor)}
               onMouseLeave={(e) => {
-                if (activeSection !== id) e.target.style.color = "var(--text-muted)";
+                const isActive = item.path ? location.pathname === item.path : activeSection === item.id;
+                if (!isActive) e.target.style.color = "var(--text-muted)";
               }}
             >
-              {label}
+              {item.label}
             </button>
           ))}
 
@@ -177,22 +212,22 @@ export default function Navbar() {
         }`}
       >
         <div className="px-6 py-4 flex flex-col gap-2">
-          {NAV_LINKS.map(({ id, label }) => (
+          {NAV_LINKS.map((item) => (
             <button
-              key={id}
-              onClick={() => scrollTo(id)}
+              key={item.id}
+              onClick={() => scrollTo(item)}
               className="px-4 py-3 text-left text-sm font-medium rounded-lg transition-all duration-300"
               style={{
-                color: activeSection === id ? accentColor : "var(--text-muted)",
+                color: activeSection === item.id ? accentColor : "var(--text-muted)",
                 background:
-                  activeSection === id
+                  activeSection === item.id
                     ? isDark
                       ? "rgba(0, 240, 255, 0.08)"
                       : "rgba(0, 102, 204, 0.08)"
                     : "transparent",
               }}
             >
-              {label}
+              {item.label}
             </button>
           ))}
         </div>

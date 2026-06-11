@@ -9,6 +9,7 @@ export const NAV_LINKS = [
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "publications", label: "Publications" },
+  { id: "materials", label: "Materials", path: "/materials" },
   { id: "blogs", label: "Blog" },
   { id: "achievements", label: "Achievements" },
   { id: "contact", label: "Contact" },
