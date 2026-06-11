@@ -150,7 +150,8 @@ export default function Materials() {
           </div>
         </section>
       </div>
-      <Footer />
     </div>
+    <Footer />
+  </div>
   );
 }
