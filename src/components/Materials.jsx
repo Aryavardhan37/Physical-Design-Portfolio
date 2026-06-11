@@ -15,17 +15,17 @@ export default function Materials() {
         <div className="max-w-5xl mx-auto space-y-10">
           <button
             onClick={() => navigate("/")}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300"
-          style={{
-            color: accent,
-            border: `1px solid ${accent}`,
-            background: isDark ? "rgba(0, 240, 255, 0.08)" : "rgba(0, 102, 204, 0.08)",
-          }}
-        >
-          ← Back to Portfolio
-        </button>
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300"
+            style={{
+              color: accent,
+              border: `1px solid ${accent}`,
+              background: isDark ? "rgba(0, 240, 255, 0.08)" : "rgba(0, 102, 204, 0.08)",
+            }}
+          >
+            ← Back to Portfolio
+          </button>
 
-        <header className="space-y-4">
+          <header className="space-y-4">
           <p className="text-sm font-mono uppercase tracking-[0.36em]" style={{ color: accent }}>
             VLSI Physical Design Materials
           </p>
