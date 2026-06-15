@@ -42,7 +42,7 @@ export const ABOUT_DATA = {
   paragraphs: [
     "I\u2019m an ASIC Physical Design Engineer at Einfochips (An Arrow Company), working across the full backend design flow with Synopsys and Cadence tools. My experience spans technology nodes from 130nm all the way down to 3nm.",
     "I graduated from Marwadi University, Rajkot with a B.Tech in Information & Communication Technology, specializing in Embedded Systems and VLSI, with a CGPA of 9.24/10.",
-    "I care about clean timing, clean layouts, and being part of teams that ship silicon. Beyond physical design, I have a deep interest in IoT, AI, and research \u2014 with two IEEE publications and a government-granted copyright to my name.",
+    "I care about clean timing, clean layouts, and being part of teams that ship silicon. Beyond physical design, I have a deep interest in IoT, AI, and research \u2014 with multiple IEEE publications and a government-granted copyright to my name.",
   ],
   highlights: [
     { label: "Tech Nodes", value: "130nm \u2014 3nm" },
