@@ -145,6 +145,8 @@ export const SKILLS_DATA = [
     skills: ["Speaker & Presenter", "Problem Solving", "Logical Thinking", "Communication", "Team Collaboration", "Time Management"],
   },
 ];
+
+
 export const PROJECTS_DATA = [
   {
     id: 1,
@@ -815,4 +817,60 @@ export const BLOGS_DATA = [
       },
     ],
   }
+];
+export const MATERIALS_DATA = [
+  {
+    title: "IC Compiler II — Design Planning",
+    description: "Synopsys IC Compiler II design planning guide.",
+    file: "/629489857-IC-Compiler-II-Design-Planning-User-Guide.pdf",
+    tag: "PnR",
+  },
+  {
+    title: "IC Compiler II — Error Messages",
+    description: "Common IC Compiler II error messages reference.",
+    file: "/629489865-IC-Compiler-II-Error-Messages.pdf",
+    tag: "Reference",
+  },
+  {
+    title: "IC Compiler II — Tool Commands",
+    description: "Command reference for IC Compiler II.",
+    file: "/510531296-Iic2-Tool-Commands.pdf",
+    tag: "Reference",
+  },
+  {
+    title: "Design Compiler User Guide (P-2019.03)",
+    description: "Design Compiler user guide (P-2019.03).",
+    file: "/Design Compiler User Guide Version P-2019.03, March 2019.pdf",
+    tag: "Synthesis",
+  },
+  {
+    title: "Design Compiler User Guide (duplicate)",
+    description: "Alternate copy of Design Compiler user guide.",
+    file: "/Design Compiler User Guide Version P-2019.03, March 2019 (1).pdf",
+    tag: "Synthesis",
+  },
+  {
+    title: "ICC2 UG",
+    description: "IC Compiler II user guide (icc2ug).",
+    file: "/icc2ug.pdf",
+    tag: "PnR",
+  },
+  {
+    title: "IC Compiler II Lab (Orca)",
+    description: "IC Compiler II lab workbook (Orca).",
+    file: "/IC_Compiler_II_Lab-2018 Orca.pdf",
+    tag: "PnR",
+  },
+  {
+    title: "PrimeTime User Guide",
+    description: "Static timing analysis reference (PrimeTime).",
+    file: "/primetimeuser_guide.pdf",
+    tag: "STA",
+  },
+  {
+    title: "StarRC User Guide",
+    description: "StarRC extraction tool documentation.",
+    file: "/StarRC.pdf",
+    tag: "Extraction",
+  },
 ];

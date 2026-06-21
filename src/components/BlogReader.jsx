@@ -12,6 +12,7 @@ import {
   SynthesisAnim,
 } from "./BlogIllustrations";
 import InfoTerm from "./InfoTerm";
+import { useVisitorCount, formatVisitorCount } from "../hooks/useVisitorCount";
 
 const ILLUSTRATION_MAP = {
   RTLtoGDSII,
@@ -37,6 +38,8 @@ export default function BlogReader() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { isDark, toggleTheme } = useTheme();
+  const visitors = useVisitorCount();
+  const visitorText = formatVisitorCount(visitors);
 
   const blog = BLOGS_DATA.find((b) => b.id === slug);
 
@@ -73,9 +76,10 @@ export default function BlogReader() {
             ← Back
           </button>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <span className="text-xs font-mono" style={{ color: "var(--text-dim)" }}>{blog.readTime}</span>
             <span className="text-xs font-mono" style={{ color: "var(--text-dim)" }}>{blog.date}</span>
+            <span className="text-xs font-mono" style={{ color: isDark ? "#00ff88" : "#0066cc" }}>👁 {visitorText}</span>
 
             <button onClick={toggleTheme}>
               {isDark ? "☀️" : "🌙"}

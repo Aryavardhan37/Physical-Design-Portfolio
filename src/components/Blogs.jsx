@@ -2,8 +2,11 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BLOGS_DATA } from "../constants";
 import { useTheme } from "../context/ThemeContext";
+import { useVisitorCount, formatVisitorCount } from "../hooks/useVisitorCount";
 
 export default function Blogs() {
+  const visitors = useVisitorCount();
+  const visitorText = formatVisitorCount(visitors);
   const { isDark } = useTheme();
   const sectionRef = useRef(null);
   const navigate = useNavigate();
@@ -45,9 +48,11 @@ export default function Blogs() {
           >
             {"// blog.latest()"}
           </p>
+          <p className="mt-2 text-sm font-medium" style={{ color: isDark ? "#00ff88" : "#0066cc" }}>
+            👁 Visitors: {visitorText}
+          </p>
         </div>
 
-        {/* ✅ Featured Blog */}
         <div className="flex justify-center">
           {BLOGS_DATA
             .filter((blog) => blog.featured)

@@ -18,7 +18,6 @@ import Materials from "./components/Materials";
 import ChipFloorplan from "./components/three/ChipFloorplan";
 import { useTheme } from "./context/ThemeContext";
 
-
 function Portfolio() {
   const [introComplete, setIntroComplete] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);

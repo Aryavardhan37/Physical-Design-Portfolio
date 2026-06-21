@@ -1,8 +1,11 @@
 import { SOCIAL_LINKS } from "../constants";
 import { useTheme } from "../context/ThemeContext";
+import { useVisitorCount, formatVisitorCount } from "../hooks/useVisitorCount";
 
 export default function Footer() {
   const { isDark } = useTheme();
+  const visitors = useVisitorCount();
+  const visitorText = formatVisitorCount(visitors);
 
   return (
     <footer className="relative py-12">
@@ -27,6 +30,9 @@ export default function Footer() {
         </p>
         <p className="text-xs font-mono mb-4" style={{ color: "var(--text-dim)" }}>
           Built with React · Three.js · GSAP · Tailwind CSS
+        </p>
+        <p className="text-sm mb-4" style={{ color: isDark ? "#00ff88" : "#0066cc" }}>
+          👁 Visitors: {visitorText}
         </p>
         <p className="text-xs" style={{ color: isDark ? "#333" : "#ccc" }}>
           © {new Date().getFullYear()} All rights reserved.
